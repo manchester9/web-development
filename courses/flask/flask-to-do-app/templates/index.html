@@ -1,0 +1,17 @@
+<h1>Todo List</h1>
+
+<form action="/task" method="post">
+    <p><input type="text" placeholder="What do you need to do?" name="content"></p>
+    <input type="submit" value="Add task">
+</form>
+
+<ul>
+{% for task in tasks %}
+    <li>
+        {% if task.done %} <strike> {% endif %}{{ task.content }} {% if task.done %} </strike>{% endif %}
+        <a href="/done/{{ task.id }}">X</a>
+        <a href="/delete/{{ task.id }}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+
